@@ -22,11 +22,13 @@
 
 ## 開発環境
 
-Node.js はコンテナ内で管理し、ホスト（Windows）側にはインストール不要。
+> **⚠️ 重要: Node.js はコンテナ内のみで実行する。ホスト（Windows）側で `npm` や `node` を直接実行してはいけない。**
 
-- ベースイメージ: `node:24-alpine`
-- Vite dev server をポート `5173` で公開
-- WSL2 / NTFS 環境でのファイル監視のため `docker-compose.yml` に `CHOKIDAR_USEPOLLING=true` を設定
+- ホスト側には Docker Desktop（WSL2 バックエンド）のみが必要
+- Node.js のバージョンはコンテナイメージ `node:24-alpine` で固定
+- `npm install` / `npm run build` / `npm run test` など **全ての Node.js コマンドは `docker compose run --rm app <command>` 経由で実行する**
+- Vite dev server をポート `5173` でホストへ公開
+- WSL2 / NTFS 環境でのファイル監視のため `CHOKIDAR_USEPOLLING=true` を設定
 
 ## 主要コマンド
 
@@ -46,11 +48,6 @@ docker compose run --rm app npm run test
 # コンテナ停止・削除
 docker compose down
 ```
-
-> Docker を使わずに直接 Node.js で実行する場合は Node.js v24 LTS が必要。
-> - `npm run dev` — 開発サーバー起動
-> - `npm run build` — 本番ビルド（`dist/` に出力）
-> - `npm run test` — Vitest 実行（ウォッチなしの単発実行は `--run` フラグを使用）
 
 ## localStorage キー
 

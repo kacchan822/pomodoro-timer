@@ -1,0 +1,14 @@
+# docker-compose.yml
+services:
+  app:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      # ソースコードをコンテナにマウント（ホットリロード用）
+      - .:/app
+      # node_modules はコンテナ側を優先し、ホストのもので上書きしない
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true   # WSL2 環境でのファイル監視ポーリング有効化
+    command: npm run dev
