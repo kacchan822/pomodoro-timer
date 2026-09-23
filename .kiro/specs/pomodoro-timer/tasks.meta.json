@@ -1,5 +1,10 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "6.5 `useTimerStore.reset()` のプロパティテストを書く（Property 2）": {
+      "status": "passed",
+      "lastRunTimestamp": 1790151834655
+    }
+  },
   "executionHistory": {
     "1. プロジェクト骨格の構築": [
       {
@@ -85,6 +90,469 @@
         "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
         "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
         "timestamp": 1790149425073
+      }
+    ],
+    "4. チェックポイント — 純粋ロジック層の確認": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620185
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149633935
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150459100
+      }
+    ],
+    "5.1 `src/services/AudioService.ts` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620252
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150471851
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150515276
+      }
+    ],
+    "5.2 `src/services/NotificationService.ts` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620309
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150515656
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150886198
+      }
+    ],
+    "6.1 `src/stores/settingsStore.ts` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620350
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150519392
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150886633
+      }
+    ],
+    "6.2 `src/stores/statisticsStore.ts` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620398
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150519756
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150886957
+      }
+    ],
+    "6.3 `src/stores/timerStore.ts` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620468
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150890381
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151776845
+      }
+    ],
+    "7. チェックポイント — ストアとサービス層の確認": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620511
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162130777
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162234119
+      }
+    ],
+    "8.1 `src/components/TimerDisplay.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620554
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151783527
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152224107
+      }
+    ],
+    "8.2 `src/components/TimerControls.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620601
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151784180
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152224734
+      }
+    ],
+    "8.3 `src/components/PhaseIndicator.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620651
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151784494
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152225096
+      }
+    ],
+    "8.4 `src/components/StatisticsPanel.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620697
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152229556
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152298628
+      }
+    ],
+    "8.5 `src/components/NotificationToggle.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620752
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152229993
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152299069
+      }
+    ],
+    "8.6 `src/components/SettingsForm.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620799
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152230388
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152299400
+      }
+    ],
+    "9.1 `src/pages/TimerPage.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620851
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152305509
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162104881
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162251512
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162351839
+      }
+    ],
+    "9.2 `src/pages/SettingsPage.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620896
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152305988
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162107950
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162252151
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162353287
+      }
+    ],
+    "9.3 `src/App.vue` の実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149620949
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162371581
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162434541
+      }
+    ],
+    "10.1 プロダクションビルドの確認": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149621028
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162439641
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162534403
+      }
+    ],
+    "11. 最終チェックポイント — 全テストの確認": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790149621097
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162539493
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162630725
+      }
+    ],
+    "5. 副作用サービスの実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150886338
+      }
+    ],
+    "6.6 ストレージ関連のユニットテストを書く": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790150890900
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151777378
+      }
+    ],
+    "6. Pinia ストアの実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151776982
+      }
+    ],
+    "6.4 `useTimerStore` のユニットテストを書く": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151782253
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152222518
+      }
+    ],
+    "6.5 `useTimerStore.reset()` のプロパティテストを書く（Property 2）": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790151782634
+      },
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152223468
+      }
+    ],
+    "8. UI コンポーネントの実装": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152299534
+      }
+    ],
+    "8.7 `TimerDisplay.vue` のコンポーネントテストを書く": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152303830
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162111332
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162252752
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162354167
+      }
+    ],
+    "8.8 `TimerControls.vue` のコンポーネントテストを書く": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152304307
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162111896
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162253391
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162355625
+      }
+    ],
+    "8.9 `SettingsForm.vue` のコンポーネントテストを書く": [
+      {
+        "executionId": "6be60114-d5cb-4f60-94de-9a84ab12951e",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790152304907
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162112269
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162253737
+      },
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162356617
+      }
+    ],
+    "9. ページルーティングと App の組み立て": [
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162434655
+      }
+    ],
+    "10. Cloudflare Pages ビルド検証": [
+      {
+        "executionId": "247eb400-80aa-48b5-bba7-89437143805a",
+        "chatSessionId": "sess_2a38533a-7efa-4e13-9438-26852a673c6e",
+        "timestamp": 1790162534572
       }
     ]
   }

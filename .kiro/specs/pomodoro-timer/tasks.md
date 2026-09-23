@@ -95,35 +95,35 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `isSameDay(a, b) === isSameDay(b, a)`（対称律）と `isSameDay(a, a) === true`（反射律）を検証する
     - **Validates: Requirements 6.1, 6.5**
 
-- [ ] 4. チェックポイント — 純粋ロジック層の確認
+- [x] 4. チェックポイント — 純粋ロジック層の確認
   - 全テストが通過することを確認する。問題があればユーザーに確認する。
 
-- [ ] 5. 副作用サービスの実装
-  - [ ] 5.1 `src/services/AudioService.ts` の実装
+- [x] 5. 副作用サービスの実装
+  - [x] 5.1 `src/services/AudioService.ts` の実装
     - `playPhaseEndSound(): void` — Web Audio API で `OscillatorNode` を使いビープ音を再生する
     - `AudioContext` の生成と `resume()` を `try/catch` でラップし、失敗時は silent fail とする
     - _Requirements: 5.1_
 
-  - [ ] 5.2 `src/services/NotificationService.ts` の実装
+  - [x] 5.2 `src/services/NotificationService.ts` の実装
     - `requestPermission(): Promise<NotificationPermission>` — ブラウザの通知許可を要求する
     - `notifyPhaseEnd(nextPhase: Phase): void` — 許可済みの場合のみ `Notification` を表示し、`AudioService.playPhaseEndSound()` を呼ぶ
     - `Notification.permission === 'denied'` の場合はサウンドのみ再生し、再要求しない
     - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-- [ ] 6. Pinia ストアの実装
-  - [ ] 6.1 `src/stores/settingsStore.ts` の実装
+- [x] 6. Pinia ストアの実装
+  - [x] 6.1 `src/stores/settingsStore.ts` の実装
     - `useSettingsStore` を Setup Store スタイルで定義する
     - 起動時に `loadSettings()` を呼び、`settings` ref を初期化する
     - `saveSettingsAction(s: Settings): void` — `validateSettings` で検証後、`saveSettings` を呼び `settings` を更新する
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 4.1, 4.2, 4.3, 4.4_
 
-  - [ ] 6.2 `src/stores/statisticsStore.ts` の実装
+  - [x] 6.2 `src/stores/statisticsStore.ts` の実装
     - `useStatisticsStore` を Setup Store スタイルで定義する
     - 起動時に `loadStatistics()` を呼び、`todayCount` ref を初期化する（前日の場合は 0 でリセット）
     - `incrementToday(): void` — `todayCount` を加算し `saveStatistics` を呼ぶ
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6_
 
-  - [ ] 6.3 `src/stores/timerStore.ts` の実装
+  - [x] 6.3 `src/stores/timerStore.ts` の実装
     - `useTimerStore` を Setup Store スタイルで定義する
     - `phase`, `secondsRemaining`, `isRunning`, `completedSessions` を ref で保持する
     - `formattedTime` と `formattedTitle` を computed で提供する
@@ -135,99 +135,99 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `document.title` を `formattedTitle` で更新する
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4, 3.6, 5.1, 5.2, 5.5_
 
-  - [ ]* 6.4 `useTimerStore` のユニットテストを書く
+  - [x]* 6.4 `useTimerStore` のユニットテストを書く
     - `start()` で `isRunning` が `true` になることを検証する
     - `pause()` で `isRunning` が `false` になり `secondsRemaining` が保持されることを検証する
     - `tick()` でタイムアップ時にフェーズ遷移・統計加算・通知サービス呼び出しが行われることを検証する
     - `reset()` で `secondsRemaining` が現在フェーズの設定秒数に戻ることを検証する（Property 2 の確認）
     - _Requirements: 1.2, 1.3, 1.4, 1.5, 2.1_
 
-  - [ ]* 6.5 `useTimerStore.reset()` のプロパティテストを書く（Property 2）
+  - [x]* 6.5 `useTimerStore.reset()` のプロパティテストを書く（Property 2）
     - **Property 2: リセット後の残り時間は設定値と一致する**
     - 合法な `Settings` と任意の `Phase` で `reset()` 後の `secondsRemaining` が `settings[phase + 'Minutes'] * 60` と等しいことを検証する
     - **Validates: Requirements 1.4**
 
-  - [ ]* 6.6 ストレージ関連のユニットテストを書く
+  - [x]* 6.6 ストレージ関連のユニットテストを書く
     - `loadSettings()` でストレージが空の場合に `DEFAULT_SETTINGS` を返すことを検証する
     - `loadSettings()` で保存済みデータがある場合にその値を返すことを検証する
     - `loadStatistics()` で前日以前の日付の場合に `todayCount: 0` でリセットされることを検証する
     - _Requirements: 4.1, 4.2, 6.4, 6.5_
 
-- [ ] 7. チェックポイント — ストアとサービス層の確認
+- [x] 7. チェックポイント — ストアとサービス層の確認
   - 全テストが通過することを確認する。問題があればユーザーに確認する。
 
-- [ ] 8. UI コンポーネントの実装
-  - [ ] 8.1 `src/components/TimerDisplay.vue` の実装
+- [x] 8. UI コンポーネントの実装
+  - [x] 8.1 `src/components/TimerDisplay.vue` の実装
     - `TimerDisplayProps`（`phase`, `secondsRemaining`, `isRunning`）を `defineProps<T>()` で受け取る
     - 残り時間を `MM:SS` 形式で表示し、フェーズ名（日本語ラベル）を表示する
     - `aria-live="polite"` 領域を設け、フェーズ変更時のみ `aria-live="assertive"` に切り替える
     - CSS Modules でスタイルを適用する
     - _Requirements: 1.1, 2.5, 8.1_
 
-  - [ ] 8.2 `src/components/TimerControls.vue` の実装
+  - [x] 8.2 `src/components/TimerControls.vue` の実装
     - `TimerControlsProps`（`isRunning`）を受け取り、`start`, `pause`, `reset` イベントを `defineEmits<T>()` で定義する
     - 全ボタンに `type="button"` と適切な `aria-label` を付与する
     - `isRunning` に応じてスタート/一時停止ボタンを切り替える
     - _Requirements: 1.2, 1.3, 1.4, 8.2, 8.4_
 
-  - [ ] 8.3 `src/components/PhaseIndicator.vue` の実装
+  - [x] 8.3 `src/components/PhaseIndicator.vue` の実装
     - `PhaseIndicatorProps`（`completedInCycle`, `sessionsPerCycle`）を受け取る
     - `getIndicatorStates` を呼び出してドット（◉/○）を描画する
     - _Requirements: 2.6_
 
-  - [ ] 8.4 `src/components/StatisticsPanel.vue` の実装
+  - [x] 8.4 `src/components/StatisticsPanel.vue` の実装
     - `StatisticsPanelProps`（`todayCount`）を受け取り、当日の完了セッション数を表示する
     - _Requirements: 6.2_
 
-  - [ ] 8.5 `src/components/NotificationToggle.vue` の実装
+  - [x] 8.5 `src/components/NotificationToggle.vue` の実装
     - `notificationsEnabled` の切り替えトグルを実装する
     - 初回クリック時に `requestPermission()` を呼ぶ
     - _Requirements: 5.3, 5.5_
 
-  - [ ] 8.6 `src/components/SettingsForm.vue` の実装
+  - [x] 8.6 `src/components/SettingsForm.vue` の実装
     - `SettingsFormProps`（`currentSettings`）を受け取り、`save` イベントで `Settings` ペイロードを emit する
     - 各入力フィールドの値を `validateSettings` でリアルタイム検証し、エラーメッセージをインライン表示する
     - バリデーションエラーがある場合は保存ボタンを `disabled` にする
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.7_
 
-  - [ ]* 8.7 `TimerDisplay.vue` のコンポーネントテストを書く
+  - [x]* 8.7 `TimerDisplay.vue` のコンポーネントテストを書く
     - `aria-live` 領域が DOM に存在することを `@testing-library/vue` で検証する
     - _Requirements: 8.1_
 
-  - [ ]* 8.8 `TimerControls.vue` のコンポーネントテストを書く
+  - [x]* 8.8 `TimerControls.vue` のコンポーネントテストを書く
     - 全ボタンに `aria-label` が付与されていることを検証する
     - `notifyPhaseEnd()` で permission denied 時に Notification が呼ばれず AudioService のみ呼ばれることを検証する
     - _Requirements: 8.2, 8.4, 5.4_
 
-  - [ ]* 8.9 `SettingsForm.vue` のコンポーネントテストを書く
+  - [x]* 8.9 `SettingsForm.vue` のコンポーネントテストを書く
     - 範囲外の値を入力したときにエラーメッセージが表示され保存ボタンが無効化されることを検証する
     - _Requirements: 3.7_
 
-- [ ] 9. ページルーティングと App の組み立て
-  - [ ] 9.1 `src/pages/TimerPage.vue` の実装
+- [x] 9. ページルーティングと App の組み立て
+  - [x] 9.1 `src/pages/TimerPage.vue` の実装
     - `PhaseIndicator`, `TimerDisplay`, `TimerControls`, `StatisticsPanel`, `NotificationToggle` を組み合わせてタイマー画面を構築する
     - `useTimerStore`, `useSettingsStore`, `useStatisticsStore` を接続する
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.5, 2.6, 5.3, 6.2_
 
-  - [ ] 9.2 `src/pages/SettingsPage.vue` の実装
+  - [x] 9.2 `src/pages/SettingsPage.vue` の実装
     - `SettingsForm` をラップし、`useSettingsStore.saveSettingsAction` を接続する
     - 設定保存後に `useTimerStore.applySettings` を呼んでタイマーをリセットする
     - localStorage アクセスエラー時に「設定が保存されません」バナーを 1 度だけ表示する
     - _Requirements: 3.5, 3.6, 3.7, 4.3_
 
-  - [ ] 9.3 `src/App.vue` の実装
+  - [x] 9.3 `src/App.vue` の実装
     - `TimerPage` と `SettingsPage` を切り替えるナビゲーションを実装する（vue-router 不使用、`ref<'timer' | 'settings'>` で切り替え）
     - `main.ts` で `createApp`, `createPinia` を組み立ててマウントする
     - _Requirements: 7.1_
 
-- [ ] 10. Cloudflare Pages ビルド検証
-  - [ ] 10.1 プロダクションビルドの確認
+- [x] 10. Cloudflare Pages ビルド検証
+  - [x] 10.1 プロダクションビルドの確認
     - `npm run build` が成功し `dist/` を生成することを確認するスモークテストスクリプトを作成する
     - `dist/` に `index.html`, `_redirects` が存在することを検証する
     - `dist/` にインラインスクリプト（`<script>` タグ内の直接記述）が含まれないことを検証する（CSP 要件）
     - _Requirements: 7.3, 7.4, 7.5_
 
-- [ ] 11. 最終チェックポイント — 全テストの確認
+- [x] 11. 最終チェックポイント — 全テストの確認
   - 全テストが通過することを確認する。問題があればユーザーに確認する。
 
 ---
