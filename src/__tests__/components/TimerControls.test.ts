@@ -1,11 +1,11 @@
 /**
  * TimerControls.vue コンポーネントテスト
  *
- * - 全ボタンに aria-label が付与されていることを検証する（要件 8.2, 8.4）
- * - notifyPhaseEnd() で permission denied 時に Notification が呼ばれず
- *   AudioService のみ呼ばれることを検証する（要件 5.4）
+ * - 全ボタンに aria-label / type="button" が付与されていることを検証する（要件 8.2, 8.4）
+ * - notifyPhaseEnd() の通知許可状態に応じた動作を検証する（要件 5.2, 5.4）
+ * （旧 TimerControls.component.test.ts を統合済み）
  *
- * Requirements: 8.2, 8.4, 5.4
+ * Requirements: 8.2, 8.4, 5.2, 5.4
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
@@ -21,131 +21,141 @@ vi.mock('../../services/AudioService', () => ({
 import { playPhaseEndSound } from '../../services/AudioService';
 
 // ---------------------------------------------------------------------------
-// TimerControls.vue コンポーネントテスト
+// aria-label / type="button" の付与（要件 8.2, 8.4）
 // ---------------------------------------------------------------------------
 
-describe('TimerControls.vue', () => {
-  describe('aria-label の付与（要件 8.2, 8.4）', () => {
-    it('isRunning=false のとき、スタートボタンに aria-label="スタート" が付与されている', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: false },
-      });
+describe('TimerControls.vue — ボタン属性（要件 8.2, 8.4）', () => {
+  it('isRunning=false のとき、全ボタンに空でない aria-label が付与されている', () => {
+    const { container } = render(TimerControls, { props: { isRunning: false } });
 
-      const startBtn = getByRole('button', { name: 'スタート' });
-      expect(startBtn).toBeTruthy();
-      expect(startBtn.getAttribute('aria-label')).toBe('スタート');
+    const buttons = container.querySelectorAll('button');
+    // 停止中はスタート + リセットの 2 ボタン
+    expect(buttons.length).toBe(2);
+    buttons.forEach((btn) => {
+      const label = btn.getAttribute('aria-label');
+      expect(label).not.toBeNull();
+      expect(label?.trim().length ?? 0).toBeGreaterThan(0);
     });
+  });
 
-    it('isRunning=false のとき、リセットボタンに aria-label="リセット" が付与されている', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: false },
-      });
+  it('isRunning=true のとき、全ボタンに空でない aria-label が付与されている', () => {
+    const { container } = render(TimerControls, { props: { isRunning: true } });
 
+    const buttons = container.querySelectorAll('button');
+    // 実行中は一時停止 + リセットの 2 ボタン
+    expect(buttons.length).toBe(2);
+    buttons.forEach((btn) => {
+      const label = btn.getAttribute('aria-label');
+      expect(label).not.toBeNull();
+      expect(label?.trim().length ?? 0).toBeGreaterThan(0);
+    });
+  });
+
+  it('isRunning=false のとき、スタートボタンに aria-label="スタート" が付与されている', () => {
+    const { getByRole } = render(TimerControls, { props: { isRunning: false } });
+
+    const startBtn = getByRole('button', { name: 'スタート' });
+    expect(startBtn.getAttribute('aria-label')).toBe('スタート');
+  });
+
+  it('isRunning=true のとき、一時停止ボタンに aria-label="一時停止" が付与されている', () => {
+    const { getByRole } = render(TimerControls, { props: { isRunning: true } });
+
+    const pauseBtn = getByRole('button', { name: '一時停止' });
+    expect(pauseBtn.getAttribute('aria-label')).toBe('一時停止');
+  });
+
+  it('リセットボタンには常に aria-label="リセット" が付与されている', () => {
+    for (const isRunning of [false, true]) {
+      const { getByRole, unmount } = render(TimerControls, { props: { isRunning } });
       const resetBtn = getByRole('button', { name: 'リセット' });
-      expect(resetBtn).toBeTruthy();
       expect(resetBtn.getAttribute('aria-label')).toBe('リセット');
-    });
+      unmount();
+    }
+  });
 
-    it('isRunning=true のとき、一時停止ボタンに aria-label="一時停止" が付与されている', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: true },
+  it('全ボタンに type="button" が指定されている', () => {
+    for (const isRunning of [false, true]) {
+      const { container, unmount } = render(TimerControls, { props: { isRunning } });
+      const buttons = container.querySelectorAll('button');
+      buttons.forEach((btn) => {
+        expect(btn.getAttribute('type')).toBe('button');
       });
-
-      const pauseBtn = getByRole('button', { name: '一時停止' });
-      expect(pauseBtn).toBeTruthy();
-      expect(pauseBtn.getAttribute('aria-label')).toBe('一時停止');
-    });
-
-    it('isRunning=true のとき、リセットボタンに aria-label="リセット" が付与されている', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: true },
-      });
-
-      const resetBtn = getByRole('button', { name: 'リセット' });
-      expect(resetBtn).toBeTruthy();
-      expect(resetBtn.getAttribute('aria-label')).toBe('リセット');
-    });
-
-    it('isRunning=false のとき、スタートボタンは type="button" を持つ', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: false },
-      });
-
-      const startBtn = getByRole('button', { name: 'スタート' });
-      expect(startBtn.getAttribute('type')).toBe('button');
-    });
-
-    it('isRunning=true のとき、一時停止ボタンは type="button" を持つ', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: true },
-      });
-
-      const pauseBtn = getByRole('button', { name: '一時停止' });
-      expect(pauseBtn.getAttribute('type')).toBe('button');
-    });
-
-    it('リセットボタンは常に type="button" を持つ', () => {
-      const { getByRole } = render(TimerControls, {
-        props: { isRunning: false },
-      });
-
-      const resetBtn = getByRole('button', { name: 'リセット' });
-      expect(resetBtn.getAttribute('type')).toBe('button');
-    });
+      unmount();
+    }
   });
 });
 
 // ---------------------------------------------------------------------------
-// notifyPhaseEnd — permission denied 時の動作テスト（要件 5.4）
+// notifyPhaseEnd — 通知許可の状態に応じた動作（要件 5.2, 5.4）
 // ---------------------------------------------------------------------------
 
-describe('notifyPhaseEnd() — permission denied 時（要件 5.4）', () => {
-  // Notification コンストラクタのモックを保持する
-  let NotificationMock: ReturnType<typeof vi.fn>;
-  let originalNotification: typeof Notification;
+describe('notifyPhaseEnd() — 通知許可の状態に応じた動作（要件 5.2, 5.4）', () => {
+  let NotificationMock: ReturnType<typeof vi.fn> & {
+    permission: NotificationPermission;
+    requestPermission: ReturnType<typeof vi.fn>;
+  };
+  let originalNotification: typeof Notification | undefined;
 
   beforeEach(() => {
-    // Notification コンストラクタをモック化する
-    NotificationMock = vi.fn();
-    NotificationMock.permission = 'denied' as NotificationPermission;
+    NotificationMock = vi.fn() as unknown as typeof NotificationMock;
     NotificationMock.requestPermission = vi.fn().mockResolvedValue('denied');
 
-    originalNotification = global.Notification;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (global as any).Notification = NotificationMock;
+    originalNotification = (global as { Notification?: typeof Notification }).Notification;
+    (global as unknown as { Notification: unknown }).Notification = NotificationMock;
 
-    // playPhaseEndSound の呼び出し履歴をリセット
     vi.mocked(playPhaseEndSound).mockClear();
   });
 
   afterEach(() => {
-    // グローバルの Notification を元に戻す
-    global.Notification = originalNotification;
+    (global as unknown as { Notification: unknown }).Notification = originalNotification;
   });
 
-  it('permission が denied のとき、playPhaseEndSound が呼ばれる（要件 5.4）', () => {
+  it('permission=denied のとき、playPhaseEndSound が 1 回呼ばれる（要件 5.4）', () => {
+    NotificationMock.permission = 'denied';
+
     notifyPhaseEnd('shortBreak');
 
     expect(playPhaseEndSound).toHaveBeenCalledOnce();
   });
 
-  it('permission が denied のとき、new Notification() は呼ばれない（要件 5.4）', () => {
+  it('permission=denied のとき、new Notification() は呼ばれない（要件 5.4）', () => {
+    NotificationMock.permission = 'denied';
+
     notifyPhaseEnd('shortBreak');
 
     expect(NotificationMock).not.toHaveBeenCalled();
   });
 
-  it('permission が denied のとき、longBreak フェーズでも Notification は呼ばれない（要件 5.4）', () => {
-    notifyPhaseEnd('longBreak');
+  it('permission=denied のとき、どのフェーズでも Notification は呼ばれずサウンドのみ再生される（要件 5.4）', () => {
+    NotificationMock.permission = 'denied';
+
+    for (const phase of ['session', 'shortBreak', 'longBreak'] as const) {
+      vi.mocked(playPhaseEndSound).mockClear();
+      NotificationMock.mockClear();
+
+      notifyPhaseEnd(phase);
+
+      expect(playPhaseEndSound).toHaveBeenCalledOnce();
+      expect(NotificationMock).not.toHaveBeenCalled();
+    }
+  });
+
+  it('permission=default（未応答）のときも Notification は呼ばれずサウンドのみ再生される（要件 5.4）', () => {
+    NotificationMock.permission = 'default';
+
+    notifyPhaseEnd('shortBreak');
 
     expect(playPhaseEndSound).toHaveBeenCalledOnce();
     expect(NotificationMock).not.toHaveBeenCalled();
   });
 
-  it('permission が denied のとき、session フェーズでも Notification は呼ばれない（要件 5.4）', () => {
-    notifyPhaseEnd('session');
+  it('permission=granted のとき、サウンド再生に加えて Notification が表示される（要件 5.2）', () => {
+    NotificationMock.permission = 'granted';
+
+    notifyPhaseEnd('shortBreak');
 
     expect(playPhaseEndSound).toHaveBeenCalledOnce();
-    expect(NotificationMock).not.toHaveBeenCalled();
+    expect(NotificationMock).toHaveBeenCalledOnce();
   });
 });
