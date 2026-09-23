@@ -33,24 +33,24 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `getIndicatorStates(completedInCycle, sessionsPerCycle): boolean[]` — インジケーター状態配列を生成する
     - _Requirements: 1.1, 1.6, 2.2, 2.3, 2.4, 2.6_
 
-  - [ ]* 3.2 `formatTime` のプロパティテストを書く（Property 1）
+  - [x]* 3.2 `formatTime` のプロパティテストを書く（Property 1）
     - **Property 1: formatTime のラウンドトリップ整合性**
     - `fc.integer({ min: 0, max: 5999 })` で 100 イテレーション実行する
     - `MM:SS` パターン一致と `M*60+S === seconds` を検証する
     - **Validates: Requirements 1.1**
 
-  - [ ]* 3.3 `getNextPhase` のプロパティテストを書く（Property 3）
+  - [x]* 3.3 `getNextPhase` のプロパティテストを書く（Property 3）
     - **Property 3: フェーズ遷移ロジックの正確性**
     - `fc.integer({ min: 1, max: 100 })` と `fc.integer({ min: 1, max: 8 })` で組み合わせを生成する
     - セッション完了時とブレーク完了時の遷移条件を全網羅する
     - **Validates: Requirements 2.2, 2.3, 2.4**
 
-  - [ ]* 3.4 `getIndicatorStates` のプロパティテストを書く（Property 8）
+  - [x]* 3.4 `getIndicatorStates` のプロパティテストを書く（Property 8）
     - **Property 8: セッションインジケーター配列の不変条件**
     - 配列長が `sessionsPerCycle` と等しく、先頭 `completedInCycle` 個が `true`、残りが `false` であることを検証する
     - **Validates: Requirements 2.6**
 
-  - [ ]* 3.5 `formatTitle` のプロパティテストを書く（Property 9）
+  - [x]* 3.5 `formatTitle` のプロパティテストを書く（Property 9）
     - **Property 9: タイトルフォーマットの構造不変条件**
     - `formatTitle` の出力が `formatTime` の出力を含むことを検証する
     - **Validates: Requirements 1.6**
@@ -61,7 +61,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - エラーがある場合は `{ valid: false, errors: Record<keyof Settings, string> }` を返す
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.7_
 
-  - [ ]* 3.7 `validateSettings` のプロパティテストを書く（Property 4）
+  - [x]* 3.7 `validateSettings` のプロパティテストを書く（Property 4）
     - **Property 4: 設定バリデーションの境界整合性**
     - 合法な範囲内の全組み合わせで `valid: true`、境界を 1 超えた値で `valid: false` を検証する
     - **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.7**
@@ -75,12 +75,12 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `saveStatistics(st: Statistics): void` — `localStorage` に書き込む（`try/catch` 必須）
     - _Requirements: 3.5, 4.1, 4.2, 4.3, 4.4, 6.3, 6.4, 6.5, 6.6_
 
-  - [ ]* 3.9 設定シリアライズのプロパティテストを書く（Property 5）
+  - [x]* 3.9 設定シリアライズのプロパティテストを書く（Property 5）
     - **Property 5: 設定のシリアライズ・デシリアライズ ラウンドトリップ**
     - 合法な `Settings` オブジェクトを生成し、`deserializeSettings(serializeSettings(s))` が元と深く等しいことを検証する
     - **Validates: Requirements 3.5, 4.3**
 
-  - [ ]* 3.10 統計シリアライズのプロパティテストを書く（Property 6）
+  - [x]* 3.10 統計シリアライズのプロパティテストを書く（Property 6）
     - **Property 6: 統計のシリアライズ・デシリアライズ ラウンドトリップ**
     - `deserializeStatistics(serializeStatistics(st))` が元と等しいことを検証する
     - **Validates: Requirements 6.6**
@@ -90,7 +90,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `getTodayString(): string` — ローカルタイムゾーンで今日の YYYY-MM-DD 文字列を返す
     - _Requirements: 6.1, 6.4, 6.5_
 
-  - [ ]* 3.12 `isSameDay` のプロパティテストを書く（Property 7）
+  - [x]* 3.12 `isSameDay` のプロパティテストを書く（Property 7）
     - **Property 7: `isSameDay` の対称性**
     - `isSameDay(a, b) === isSameDay(b, a)`（対称律）と `isSameDay(a, a) === true`（反射律）を検証する
     - **Validates: Requirements 6.1, 6.5**
@@ -229,6 +229,22 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
 
 - [x] 11. 最終チェックポイント — 全テストの確認
   - 全テストが通過することを確認する。問題があればユーザーに確認する。
+
+- [x] 12. 振る舞い不変条件のプロパティテスト追加（後追い）
+  - 要件から導かれる副作用付き振る舞いの不変条件を PBT 化し、`design.md` の Correctness Properties に Property 10〜13 として追記する
+  - Docker (`docker compose run --rm app npm test`) で全 117 テストの通過を確認する
+  - [x] 12.1 `src/__tests__/stores/timerStore.tick.property.test.ts` を書く（Property 10）
+    - **Property 10: tick() のカウントダウン不変条件**
+    - `reset()` 後から N 回 `tick()` すると `secondsRemaining` がちょうど N 減り負にならないこと、休憩フェーズの 0 到達で `session` へ遷移し初期時間へリセットされること、連続 tick でフェーズを跨いでも `secondsRemaining >= 0` を検証する
+    - **Validates: Requirements 1.2, 1.5, 2.4**
+  - [x] 12.2 `src/__tests__/stores/statisticsStore.property.test.ts` を書く（Property 11）
+    - **Property 11: 統計インクリメントの加法不変条件**
+    - `incrementToday()` を n 回で `todayCount` がちょうど n 増え localStorage に保存されること、`session` フェーズで tick を n 回完了させると `completedSessions` と `todayCount` がともに n 増えることを検証する
+    - **Validates: Requirements 2.1, 6.3**
+  - [x] 12.3 `src/__tests__/lib/storage.persistence.property.test.ts` を書く（Property 12, 13）
+    - **Property 12: 設定の永続化ラウンドトリップ** — `saveSettings` → `loadSettings` が深く等しく、空なら `DEFAULT_SETTINGS` を返すことを検証する
+    - **Property 13: 統計の日付リセット不変条件** — 保存日付が今日なら保持、前日以前なら `todayCount` を 0 にリセットし日付を今日に更新することを検証する
+    - **Validates: Requirements 4.1, 4.2, 6.4, 6.5**
 
 ---
 

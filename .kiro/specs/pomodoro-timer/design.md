@@ -363,6 +363,38 @@ function getTodayString(): string;
 
 ---
 
+### Property 10: tick() のカウントダウン不変条件
+
+*For any* 合法な `Settings` と任意の `Phase`、`reset()` 直後の `secondsRemaining`（= 現在フェーズの分数 × 60）から `tick()` を N 回（N < 初期残り秒数）呼んだとき、`secondsRemaining` はちょうど N 減少し、決して負にならない。また残り時間が 0 の状態で休憩フェーズ（`shortBreak` / `longBreak`）から `tick()` を呼ぶと、必ず `session` フェーズへ遷移し、`secondsRemaining` は次フェーズの初期時間へリセットされる。連続 `tick()` ではフェーズを跨いでも `secondsRemaining >= 0` が常に成立する。
+
+**Validates: Requirements 1.2, 1.5, 2.4**
+
+---
+
+### Property 11: 統計インクリメントの加法不変条件
+
+*For any* 非負の初期カウントと `n >= 1`、`incrementToday()` を n 回呼ぶと `todayCount` は初期値からちょうど n 増え、その値が今日の日付とともに `pomodoro-statistics` に保存される。また `session` フェーズで残り 0 から `tick()` を n 回完了させると、`completedSessions` と `todayCount` はともにちょうど n 増える。
+
+**Validates: Requirements 2.1, 6.3**
+
+---
+
+### Property 12: 設定の永続化ラウンドトリップ
+
+*For any* 合法な `Settings` オブジェクト `s`、`saveSettings(s)` の後に `loadSettings()` を呼ぶと `s` と深く等しい値が返る。ストレージが空の場合は常に `DEFAULT_SETTINGS` が返る。
+
+**Validates: Requirements 4.1, 4.2**
+
+---
+
+### Property 13: 統計の日付リセット不変条件
+
+*For any* `Statistics`、保存日付が今日と一致する場合は `loadStatistics()` は任意の `todayCount` をそのまま返す。保存日付が前日以前の場合は `todayCount` を必ず 0 にリセットし、日付を今日に更新して返す。
+
+**Validates: Requirements 6.4, 6.5**
+
+---
+
 ## Error Handling
 
 ### 設定値バリデーションエラー
@@ -431,12 +463,16 @@ src/
     StatisticsPanel.vue
   __tests__/
     lib/
-      timer.property.test.ts      — Property 1, 2, 3, 8, 9 (PBT)
-      validation.property.test.ts — Property 4 (PBT)
-      storage.property.test.ts    — Property 5, 6 (PBT)
-      date.property.test.ts       — Property 7 (PBT)
+      timer.property.test.ts               — Property 1, 3, 8, 9 (PBT)
+      validation.property.test.ts          — Property 4 (PBT)
+      storage.property.test.ts             — Property 5, 6 (PBT)
+      storage.persistence.property.test.ts — Property 12, 13 (PBT)
+      date.property.test.ts                — Property 7 (PBT)
     stores/
-      timerStore.unit.test.ts     — ユニットテスト（start/pause/reset/tick）
+      timerStore.unit.test.ts              — ユニットテスト（start/pause/reset/tick）
+      timerStore.property.test.ts          — Property 2 (PBT)
+      timerStore.tick.property.test.ts     — Property 10 (PBT)
+      statisticsStore.property.test.ts     — Property 11 (PBT)
     components/
       TimerDisplay.test.ts        — aria-live, aria-label 確認
       SettingsForm.test.ts        — バリデーションエラー表示
