@@ -5,10 +5,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    host: true,   // コンテナ外（ホスト Windows）からのアクセスを許可
+    host: true,   // Allow access from outside the container (host Windows)
     port: 5173,
   },
   test: {
     environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/test-setup.ts'],
   },
 })
