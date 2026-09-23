@@ -20,6 +20,23 @@
 | fast-check | プロパティベーステスト（PBT） |
 | jsdom | ブラウザ環境エミュレーション |
 
+### デザイン / UI アクセシビリティのコントラスト検査（必須ルール）
+
+> **CSS・色・テーマ（`.vue` の `<style>`、背景色、文字色など）を変更したら、必ずコントラスト検査テストを実行する。**
+
+- 目的: 「文字色が背景色に溶け込んで見えなくなる」退行を機械的に検出する（過去に TimerControls のボタンが不可視になった実績あり）。
+- 検査テスト:
+  - `src/lib/contrast.ts` — WCAG コントラスト比の計算ユーティリティ（純粋関数）
+  - `src/__tests__/lib/contrast.unit.test.ts` — 計算ロジックのユニットテスト
+  - `src/__tests__/design/contrast.design.test.ts` — 各コンポーネントの CSS を静的解析し、テキスト/ボタンの色と有効背景の WCAG AA コントラストを検証
+- 実行（他のテストと同じく Docker 経由）:
+  ```bash
+  docker compose run --rm app npm run test
+  ```
+- 新しいテーマ色やコンポーネントを追加したら、`contrast.design.test.ts` の検査対象リスト（`componentFiles`）に追加する。
+- 白文字を載せる面（ボタン背景など）は白に対して 4.5:1 以上を確保する。アクセント色 `#4f8ef7` は「文字が乗らない面・枠・フォーカスリング」用途に留める（白文字を載せる場合は `#2f6fd0` 以上の濃さにする）。
+- 制約: jsdom は実描画をしないため、`currentColor` / `var()` / 実際の継承色までは完全評価できない。厳密な最終確認が必要な場合は `docker compose up` で dev server を起動し、ブラウザで目視・DevTools のアクセシビリティパネルで確認する。
+
 ## 開発環境
 
 > **⚠️ 最重要ルール: Node.js / npm / npx / node / vitest / vue-tsc などの実行は、必ず Docker コンテナ内で行う。ホスト（Windows）側でこれらを直接実行してはいけない。**
@@ -72,3 +89,4 @@ docker compose down
 ## デプロイ
 
 GitHub にプッシュ → Cloudflare Pages が `npm run build` を実行し `dist/` を配信。`_redirects` ファイルにより全ルートを `index.html` へフォールバック（SPA ルーティング）。
+

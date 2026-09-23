@@ -252,7 +252,7 @@ function parseIntInput(value: string): number {
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  background-color: #4f8ef7;
+  background-color: #2f6fd0;
   color: #fff;
   border: none;
   border-radius: 0.375rem;
@@ -261,7 +261,7 @@ function parseIntInput(value: string): number {
 }
 
 .saveBtn:hover:not(:disabled) {
-  background-color: #3a7de0;
+  background-color: #255ab0;
 }
 
 .saveBtn:focus-visible {
@@ -274,3 +274,4 @@ function parseIntInput(value: string): number {
   cursor: not-allowed;
 }
 </style>
+

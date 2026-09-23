@@ -17,7 +17,7 @@ const emit = defineEmits<{
     <button
       v-if="!props.isRunning"
       type="button"
-      :class="$style.btn"
+      :class="[$style.btn, $style.btnPrimary]"
       aria-label="スタート"
       @click="emit('start')"
     >
@@ -26,7 +26,7 @@ const emit = defineEmits<{
     <button
       v-else
       type="button"
-      :class="$style.btn"
+      :class="[$style.btn, $style.btnPrimary]"
       aria-label="一時停止"
       @click="emit('pause')"
     >
@@ -55,6 +55,7 @@ const emit = defineEmits<{
   padding: 0.5rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
+  color: #f0f0f0;
   border: 2px solid currentColor;
   border-radius: 0.375rem;
   cursor: pointer;
@@ -67,7 +68,23 @@ const emit = defineEmits<{
   outline-offset: 2px;
 }
 
+/* 主要操作（スタート / 一時停止）: 明るいアクセントカラーで強調 */
+.btnPrimary {
+  color: #4f8ef7;
+}
+
+.btnPrimary:hover {
+  background-color: #4f8ef7;
+  color: #1a1a2e;
+}
+
+/* 補助操作（リセット）: 主要操作より控えめだが視認できる明度を確保 */
 .btnReset {
-  color: #888;
+  color: #b8b8c8;
+}
+
+.btnReset:hover {
+  background-color: #b8b8c8;
+  color: #1a1a2e;
 }
 </style>
