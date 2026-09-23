@@ -188,6 +188,8 @@ describe('useTimerStore', () => {
     it('セッション完了時にフェーズが shortBreak に遷移する（要件 1.5, 2.3）', () => {
       const store = useTimerStore();
 
+      // タイマー動作中（isRunning=true）にタイムアップさせる（バグ条件 X.isRunning=true）
+      store.start();
       // tick() は secondsRemaining === 0 のときにフェーズ終了処理を実行する
       // デフォルトの completedSessions = 0 で tick() すると +1 されて 1 になり、
       // 1 % 4 !== 0 なので shortBreak に遷移する
@@ -195,7 +197,8 @@ describe('useTimerStore', () => {
       store.tick();
 
       expect(store.phase).toBe('shortBreak');
-      expect(store.isRunning).toBe(false);
+      // 新仕様: 自動遷移後も isRunning は true のまま（カウントダウン自動継続）（要件 2.1, 2.2）
+      expect(store.isRunning).toBe(true);
     });
 
     it('セッション完了時（サイクル完了）に longBreak に遷移する（要件 1.5, 2.2）', () => {
@@ -205,16 +208,21 @@ describe('useTimerStore', () => {
       // completedSessions を sessionsPerCycle - 1 にセットする
       // → tick() 内で +1 されて sessionsPerCycle になり longBreak に遷移する
       store.completedSessions = settingsStore.settings.sessionsPerCycle - 1;
+      // タイマー動作中（isRunning=true）にタイムアップさせる（バグ条件 X.isRunning=true）
+      store.start();
       store.secondsRemaining = 0;
       store.tick();
 
       expect(store.phase).toBe('longBreak');
-      expect(store.isRunning).toBe(false);
+      // 新仕様: サイクル完了で longBreak へ遷移後も isRunning は true のまま（要件 2.1, 2.2）
+      expect(store.isRunning).toBe(true);
     });
 
     it('shortBreak 完了時にフェーズが session に遷移する（要件 1.5, 2.4）', () => {
       const store = useTimerStore();
 
+      // タイマー動作中（isRunning=true）にタイムアップさせる（バグ条件 X.isRunning=true）
+      store.start();
       // まず session → shortBreak に遷移させる
       store.secondsRemaining = 0;
       store.tick();
@@ -225,7 +233,8 @@ describe('useTimerStore', () => {
       store.tick();
 
       expect(store.phase).toBe('session');
-      expect(store.isRunning).toBe(false);
+      // 新仕様: shortBreak → session 遷移後も isRunning は true のまま（要件 2.1, 2.3）
+      expect(store.isRunning).toBe(true);
     });
 
     it('セッション完了時に completedSessions が 1 増える（要件 2.1）', () => {
@@ -312,7 +321,7 @@ describe('useTimerStore', () => {
       expect(notifyPhaseEnd).not.toHaveBeenCalled();
     });
 
-    it('タイムアップ後は isRunning が false になり、ユーザー操作を待つ（要件 1.5）', () => {
+    it('タイムアップ後も isRunning が true のまま自動継続する（要件 2.1, 2.2, 2.3）', () => {
       const store = useTimerStore();
 
       store.start();
@@ -320,7 +329,13 @@ describe('useTimerStore', () => {
       store.secondsRemaining = 0;
       store.tick();
 
-      expect(store.isRunning).toBe(false);
+      // 新仕様: 自動遷移後もインターバルを維持し isRunning は true のまま
+      expect(store.isRunning).toBe(true);
+
+      // インターバルが生存しており、1000ms 進めると次フェーズのカウントダウンが継続する
+      const secondsAfterTransition = store.secondsRemaining;
+      vi.advanceTimersByTime(1000);
+      expect(store.secondsRemaining).toBe(secondsAfterTransition - 1);
     });
   });
 

@@ -138,7 +138,7 @@ export const useTimerStore = defineStore('timer', () => {
    *   3. 次のフェーズを計算して遷移する（要件 1.5, 2.2〜2.4）
    *   4. notifyPhaseEnd(nextPhase) を呼ぶ（要件 5.1, 5.2）
    *   5. 次のフェーズの初期時間にリセットする
-   *   6. インターバルを停止する（自動遷移後はユーザーが次のフェーズを開始するまで停止）
+   *   6. 動作中のインターバルを維持しカウントダウンを自動継続する
    */
   function tick(): void {
     if (secondsRemaining.value > 0) {
@@ -172,9 +172,7 @@ export const useTimerStore = defineStore('timer', () => {
     phase.value = nextPhase;
     secondsRemaining.value = getSecondsForPhase(nextPhase);
 
-    // 自動遷移後はインターバルを停止し、ユーザーの操作を待つ
-    clearTimer();
-    isRunning.value = false;
+    // 自動遷移後も動作中のインターバルを維持し、カウントダウンを自動継続する（要件 2.1〜2.3）
   }
 
   /**

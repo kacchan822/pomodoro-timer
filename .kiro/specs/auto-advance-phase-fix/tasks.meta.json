@@ -1,0 +1,166 @@
+{
+  "pbtResults": {
+    "1. バグ条件の探索テストを書く（修正前）": {
+      "status": "passed",
+      "failingExample": "Property 1 (Bug Condition) failed on UNFIXED code as expected — this confirms the bug exists. Counterexample: [{\"sessionMinutes\":1,\"shortBreakMinutes\":1,\"longBreakMinutes\":1,\"sessionsPerCycle\":1,\"notificationsEnabled\":false},\"session\"] (shrunk 6 times). After a session timeup transition, store.isRunning === false (expected true), and advancing the fake timer 1000ms leaves secondsRemaining unchanged at 300 instead of 299 — proving the setInterval was destroyed. Root cause confirmed: tick() trailing clearTimer() + isRunning.value = false. All 5 tests failed (cases 1-4 + scoped PBT).",
+      "lastRunTimestamp": 1790166984259
+    },
+    "2. Preservation プロパティテストを書く（修正前）": {
+      "status": "passed",
+      "lastRunTimestamp": 1790167132990
+    },
+    "3.2 バグ条件の探索テストが PASS することを確認する": {
+      "status": "passed",
+      "lastRunTimestamp": 1790167280944
+    },
+    "3.3 Preservation テストが引き続き PASS することを確認する": {
+      "status": "passed",
+      "lastRunTimestamp": 1790167344160
+    }
+  },
+  "executionHistory": {
+    "1. バグ条件の探索テストを書く（修正前）": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166740833
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166750737
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167006766
+      }
+    ],
+    "2. Preservation プロパティテストを書く（修正前）": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166740902
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167011364
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167153470
+      }
+    ],
+    "3.1 tick() から不要なインターバル破棄を削除する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166740971
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167157797
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167229625
+      }
+    ],
+    "3.2 バグ条件の探索テストが PASS することを確認する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166741066
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167240160
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167298348
+      }
+    ],
+    "3.3 Preservation テストが引き続き PASS することを確認する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166741165
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167302849
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167360362
+      }
+    ],
+    "4. 既存テストを新仕様（自動継続）へ更新する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166741231
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167365290
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167490654
+      }
+    ],
+    "5. 統合テストを追加する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166741282
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167495111
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167615498
+      }
+    ],
+    "6. チェックポイント — すべてのテストが PASS することを確認する": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790166741341
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167619992
+      },
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167687660
+      }
+    ],
+    "3. フェーズ遷移後にカウントダウンが停止するバグの修正": [
+      {
+        "executionId": "10dc6fdc-5d4e-4876-8671-d1ecd9e88e6a",
+        "chatSessionId": "sess_7e456935-d8dc-44da-977f-1de29a169a94",
+        "timestamp": 1790167360433
+      }
+    ]
+  }
+}
