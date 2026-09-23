@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Only execute node command on Docker",
+      "description": "スペックタスク実行前に、Node/npm/vitest 等を Docker 経由で実行するルールを注入する",
+      "trigger": "PreTaskExecution",
+      "action": {
+        "type": "agent",
+        "prompt": "このプロジェクトでは Node.js/npm/npx/vitest/vue-tsc をホストで直接実行してはいけません。\nテスト・ビルド・型チェックはすべて Docker 経由で実行してください。\n- テスト: docker compose run --rm app npm run test\n- ビルド: docker compose run --rm app npm run build\n- ビルド検証: docker compose run --rm app npm run test:build\nホストで npm/node が権限拒否された場合はエラーではなく想定どおりの状態です。\n「実行できなかった」と結論づけず、必ず docker compose run --rm app ... に切り替えて実行し直してください。"
+      },
+      "enabled": true
+    }
+  ]
+}
