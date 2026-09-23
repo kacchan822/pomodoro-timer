@@ -1,4 +1,4 @@
-# 🍅 Pomodoro Timer
+# 🍅 [Pomodoro Timer](https://pomodoro.kacchan822.dev/)
 
 > **Note:**  
 > 本プロジェクトは、**Kiro University Challenge 2026** の課題として取り組んでいるものです。
