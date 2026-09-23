@@ -73,8 +73,8 @@ docker run --rm `
   - `docker compose up` で開発サーバーが起動し、ブラウザで既存機能（タイマー動作・設定・統計）が退行していないことを目視で確認する
   - _Requirements: 2.3_
 
-- [ ] 7. コミットと Dependabot PR の整理
+- [x] 7. コミットと Dependabot PR の整理
   - [x] `package.json` と `package-lock.json` をコミットする（ブランチ `chore/deps-security-update`）
-  - [ ] PR を作成する（本番バンドルへの影響なし、devDependency のみである旨を説明に記載）— ユーザー確認後に実施
-  - [ ] マージ後、重複する Dependabot PR #1 / #2 / #3 をクローズする（#3 は元々インストール不能な壊れた PR である旨を添える）
+  - [x] PR を作成しマージする（本番バンドルへの影響なし、devDependency のみである旨を説明に記載）
+  - [x] マージ後、重複する Dependabot PR #1 / #2 / #3 をクローズする（#3 は元々インストール不能な壊れた PR である旨を添える）
   - _Requirements: 3.3_
