@@ -26,6 +26,61 @@
         "chatSessionId": "sess_62b76247-9cf3-4024-85f0-d2bcb378af19",
         "timestamp": 1790148944682
       }
+    ],
+    "3.1 `src/lib/timer.ts` の実装": [
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149044064
+      },
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149415351
+      }
+    ],
+    "3.6 `src/lib/validation.ts` の実装": [
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149047387
+      },
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149418539
+      }
+    ],
+    "3.8 `src/lib/storage.ts` の実装": [
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149050702
+      },
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149425008
+      }
+    ],
+    "3.11 `src/lib/date.ts` の実装": [
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149054139
+      },
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149421877
+      }
+    ],
+    "3. 純粋ロジック関数の実装": [
+      {
+        "executionId": "31ea05fa-2b80-4864-bdb7-f6e99b264fa1",
+        "chatSessionId": "sess_d0ed553e-66e5-400c-a036-e677d1e475ae",
+        "timestamp": 1790149425073
+      }
     ]
   }
 }

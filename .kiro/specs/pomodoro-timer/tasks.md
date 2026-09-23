@@ -25,8 +25,8 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `Settings` の各フィールドに JSDoc でバリデーション範囲をコメントする
     - _Requirements: 1.1, 3.1, 3.2, 3.3, 3.4, 4.2, 6.1_
 
-- [ ] 3. 純粋ロジック関数の実装
-  - [ ] 3.1 `src/lib/timer.ts` の実装
+- [x] 3. 純粋ロジック関数の実装
+  - [x] 3.1 `src/lib/timer.ts` の実装
     - `formatTime(totalSeconds: number): string` — 秒数を `MM:SS` 形式に変換する
     - `formatTitle(phase: Phase, totalSeconds: number): string` — タブタイトル用文字列を生成する
     - `getNextPhase(currentPhase, completedSessions, sessionsPerCycle): Phase` — フェーズ遷移ロジックを実装する
@@ -55,7 +55,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `formatTitle` の出力が `formatTime` の出力を含むことを検証する
     - **Validates: Requirements 1.6**
 
-  - [ ] 3.6 `src/lib/validation.ts` の実装
+  - [x] 3.6 `src/lib/validation.ts` の実装
     - `validateSettings(s: Settings): ValidationResult` を実装する
     - 各フィールドの境界値チェック（`sessionMinutes: 1–60`, `shortBreakMinutes: 1–30`, `longBreakMinutes: 1–60`, `sessionsPerCycle: 1–8`）を行う
     - エラーがある場合は `{ valid: false, errors: Record<keyof Settings, string> }` を返す
@@ -66,7 +66,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - 合法な範囲内の全組み合わせで `valid: true`、境界を 1 超えた値で `valid: false` を検証する
     - **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.7**
 
-  - [ ] 3.8 `src/lib/storage.ts` の実装
+  - [x] 3.8 `src/lib/storage.ts` の実装
     - `serializeSettings(s: Settings): string` と `deserializeSettings(json: string): Settings` を実装する
     - `serializeStatistics(st: Statistics): string` と `deserializeStatistics(json: string): Statistics` を実装する
     - `loadSettings(): Settings` — `localStorage` から読み込み、失敗時は `DEFAULT_SETTINGS` を返す（`try/catch` 必須）
@@ -85,7 +85,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
     - `deserializeStatistics(serializeStatistics(st))` が元と等しいことを検証する
     - **Validates: Requirements 6.6**
 
-  - [ ] 3.11 `src/lib/date.ts` の実装
+  - [x] 3.11 `src/lib/date.ts` の実装
     - `isSameDay(a: string, b: string): boolean` — YYYY-MM-DD 文字列の日付一致判定を実装する
     - `getTodayString(): string` — ローカルタイムゾーンで今日の YYYY-MM-DD 文字列を返す
     - _Requirements: 6.1, 6.4, 6.5_
