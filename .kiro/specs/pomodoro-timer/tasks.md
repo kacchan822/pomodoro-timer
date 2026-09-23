@@ -10,7 +10,7 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
 
 ## Tasks
 
-- [ ] 1. プロジェクト骨格の構築
+- [x] 1. プロジェクト骨格の構築
   - Vite + Vue 3 + TypeScript プロジェクトを `npm create vite@latest` で初期化する（`vue-ts` テンプレート）
   - `pinia`, `vitest`, `@testing-library/vue`, `@vue/test-utils`, `jsdom`, `fast-check` を `npm install` で追加する
   - `vite.config.ts` に `server.host: true`, `port: 5173` と Vitest の `test.environment: 'jsdom'` を設定する
