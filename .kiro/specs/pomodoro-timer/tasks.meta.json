@@ -7,6 +7,25 @@
         "chatSessionId": "sess_6ae7d8ce-173f-4b4e-b337-b92306b1589c",
         "timestamp": 1790147790893
       }
+    ],
+    "2.1 コア型定義ファイルの作成": [
+      {
+        "executionId": "3a2ef775-f973-45a0-889d-9af8535c1cd0",
+        "chatSessionId": "sess_62b76247-9cf3-4024-85f0-d2bcb378af19",
+        "timestamp": 1790148880834
+      },
+      {
+        "executionId": "3a2ef775-f973-45a0-889d-9af8535c1cd0",
+        "chatSessionId": "sess_62b76247-9cf3-4024-85f0-d2bcb378af19",
+        "timestamp": 1790148944622
+      }
+    ],
+    "2. データモデルと型定義": [
+      {
+        "executionId": "3a2ef775-f973-45a0-889d-9af8535c1cd0",
+        "chatSessionId": "sess_62b76247-9cf3-4024-85f0-d2bcb378af19",
+        "timestamp": 1790148944682
+      }
     ]
   }
 }

@@ -19,8 +19,8 @@ Vite + Vue 3 + TypeScript + Pinia + CSS Modules で構成するポモドーロ�
   - `public/_redirects` に `/* /index.html 200` を記述して SPA ルーティングを設定する
   - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-- [ ] 2. データモデルと型定義
-  - [ ] 2.1 コア型定義ファイルの作成
+- [x] 2. データモデルと型定義
+  - [x] 2.1 コア型定義ファイルの作成
     - `src/types.ts` に `Phase`, `Settings`, `DEFAULT_SETTINGS`, `TimerState`, `Statistics`, `ValidationResult` を定義する
     - `Settings` の各フィールドに JSDoc でバリデーション範囲をコメントする
     - _Requirements: 1.1, 3.1, 3.2, 3.3, 3.4, 4.2, 6.1_
