@@ -1,7 +1,7 @@
 # 🍅 [Pomodoro Timer](https://pomodoro.kacchan822.dev/)
 
 > **Note:**  
-> 本プロジェクトは、**Kiro University Challenge 2026** の課題として取り組んでいるものです。
+> 本プロジェクトは、**[Kiro University Challenge 2026](https://kiro.dev/2026/university/)** の課題として取り組んでいるものです。
 > AIエージェント（Kiro）を用いた「仕様駆動開発（Spec-Driven Development）」の実践と学習を目的としています。
 
 ## 📖 概要
